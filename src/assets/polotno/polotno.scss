@@ -6,4 +6,23 @@
     margin-bottom: 12px;
     max-width: 550px;
   }
+  // скрываем кнопки добавления страниц
+  // еще варианты: разрешить добавлять страницы, но ставить им размер дефолтным, или сразу удалять новые страницы
+  .polotno-page-container.active-page {
+    color: red;
+    div {
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+  #polotno {
+    margin: 30px auto 0 auto;
+    height: 100vh;
+    min-width: 768px;
+    max-width: 80%;
+    @media (max-width: 767px) {
+      min-width: auto;
+    }
+  }
 }

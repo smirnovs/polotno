@@ -7,9 +7,10 @@
           Для создания обложки введите в поле ниже название книги, и нажмите на кнопку "Создать"
         </div>
         <div v-else>
-          Ваша обложка:
+          Ваша обложка. Вы можете: <button @click="download">скачать</button> ее или <button @click="isShowForm = true;">отредактировать</button>. <br />
+          Или попробовать еще раз (под обложкой), с нуля.
           <div>
-            <img :src="coverImage" alt="">
+            <img :src="coverImage" alt="" class="personal-account__img">
           </div>
         </div>
         <div class="personal-account__form">
@@ -46,22 +47,34 @@
 
 <script setup lang="ts">
 import MyPolotnoTs from './MyPolotnoTs.vue'
+import { useBookCoverStore } from '../stores/polotno';
+
+const piniaStore = useBookCoverStore();
 
 import { ref } from 'vue';
 
-const isShowForm = ref(false);
-const bookName = ref('');
-const coverImage = ref('');
+const isShowForm = ref<boolean>(false);
+const bookName = ref<string>('');
+const coverImage = ref<string>('');
 
-const handleAdded = () => {
+const handleAdded = (): void => {
   if (bookName.value.length) {
     isShowForm.value = true;    
   }
+  piniaStore.addCover([]);
 }
 
 const handleImageSet = (image: string) => {
   coverImage.value = image;
   isShowForm.value = false;
-  bookName.value = '';
+}
+
+const download = (): void => {
+  const link = document.createElement('a');
+  link.href = coverImage.value;
+  link.download = `${bookName.value}.jpg`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 </script>
