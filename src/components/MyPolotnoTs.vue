@@ -144,7 +144,7 @@ onMounted(() => {
           }
           // Если текст - сбрасываем настройки. дефолтные примеры сложно обработать чтобы они выглядели нормально.
         } else if (child.type === 'text') {
-          child.set({x: 0, y: 0, fontSize: child.fontSize / 3});        }
+          child.set({x: 0, y: 0, fontSize: child.fontSize / 3, alwaysOnTop: true});        }
     });
     }
     childs = childrenLength;
