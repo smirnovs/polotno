@@ -6,7 +6,7 @@
         <div v-if="!coverImage.length">
           Для создания обложки введите в поле ниже название книги, и нажмите на кнопку "Создать"
         </div>
-        <div v-else>
+        <div v-else class="personal-account__info">
           Ваша обложка. Вы можете: <button @click="download">скачать</button> ее или <button @click="isShowForm = true;">отредактировать</button>. <br />
           Или попробовать еще раз (под обложкой), с нуля.
           <div>

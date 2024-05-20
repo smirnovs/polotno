@@ -18,4 +18,11 @@
     border: 1px solid grey;
     margin-top: 20px;
   }
+  &__info {
+    @media (max-width: 480px) {
+      button {
+        padding: 2px;
+      }
+    }
+  }
 }
